@@ -1,4 +1,5 @@
-const insertClient(client) {
+
+const insertClient = async (client) => {
 
 }
 
