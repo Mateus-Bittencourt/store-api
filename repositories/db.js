@@ -9,9 +9,10 @@ const connect = async () => {
     connectionString: "postgres://oodshszh:C8x6k2Fg-53285EJuHoF1kEViHRi5Cwx@drona.db.elephantsql.com/oodshszh",
   });
   global.connection = pool;
+
   return pool.connect();
 }
 
 export default {
-  connect,
+  connect
 }
