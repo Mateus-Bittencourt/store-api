@@ -48,4 +48,30 @@ const deleteClient = async (req, res, next) => {
   }
 };
 
-export default { createClient, getClients, getClient, deleteClient };
+const updateClient = async (req, res, next) => {
+  try {
+    const client = req.body;
+    if (
+      !client.name ||
+      !client.cpf ||
+      !client.phone ||
+      !client.email ||
+      !client.address ||
+      !client.client_id
+    ) {
+      throw new Error("Name, CPF, Phone, Email, Address and ID are required");
+    }
+    res.send(await ClientService.updateClient(client));
+    logger.info(`PUT /client - ${JSON.stringify(client)}`);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export default {
+  createClient,
+  getClients,
+  getClient,
+  deleteClient,
+  updateClient,
+};
