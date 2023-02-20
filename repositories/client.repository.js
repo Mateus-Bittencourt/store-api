@@ -36,6 +36,10 @@ const getClients = async () => {
 const getClient = async (id) => {
   const conn = await db.connect();
   try {
+    const res = await conn.query("SELECT * FROM clients WHERE client_id = $1", [
+      id,
+    ]);
+    return res.rows[0];
   } catch (error) {
     throw error;
   } finally {
@@ -56,6 +60,9 @@ const updateClient = async (id, client) => {
 const deleteClient = async (id) => {
   const conn = await db.connect();
   try {
+    const res = await conn.query("DELETE FROM clients WHERE client_id = $1", [
+      id,
+    ]);
   } catch (error) {
     throw error;
   } finally {
