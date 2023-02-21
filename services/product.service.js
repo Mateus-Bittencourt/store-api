@@ -1,7 +1,11 @@
 import ProductRepository from "../repositories/product.repository.js";
+import SupplierRepository from "../repositories/supplier.repository.js";
 
 const createProduct = async (product) => {
-  return await ProductRepository.insertProduct(product);
+  if (await SupplierRepository.getSupplier(product.supplier_id)) {
+    return await ProductRepository.insertProduct(product);
+  }
+  throw new Error("Supplier not found");
 };
 
 const getProducts = async () => {
@@ -17,7 +21,10 @@ const deleteProduct = async (id) => {
 };
 
 const updateProduct = async (product) => {
-  return await ProductRepository.updateProduct(product);
+  if (await SupplierRepository.getSupplier(product.supplier_id)) {
+    return await ProductRepository.updateProduct(product);
+  }
+  throw new Error("Supplier not found");
 };
 
 export default {
