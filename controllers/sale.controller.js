@@ -15,7 +15,7 @@ const createSale = async (req, res, next) => {
 
 const getSales = async (req, res, next) => {
   try {
-    res.send(await SaleService.getSales());
+    res.send(await SaleService.getSales(req.query.product_id));
     logger.info("GET /sale");
   } catch (error) {
     next(error);
