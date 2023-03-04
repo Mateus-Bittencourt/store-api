@@ -57,7 +57,7 @@ const updateClient = async (req, res, next) => {
       !client.phone ||
       !client.email ||
       !client.address ||
-      !client.client_id
+      !client.clientId
     ) {
       throw new Error("Name, CPF, Phone, Email, Address and ID are required");
     }
