@@ -8,7 +8,7 @@ const createProduct = async (req, res, next) => {
       !product.description ||
       !product.value ||
       !product.stock ||
-      !product.supplier_id
+      !product.supplierId
     ) {
       throw new Error(
         "Name, Description, Value, Stock and Supplier ID are required"
@@ -58,8 +58,8 @@ const updateProduct = async (req, res, next) => {
       !product.description ||
       !product.value ||
       !product.stock ||
-      !product.supplier_id ||
-      !product.product_id
+      !product.supplierId ||
+      !product.productId
     ) {
       throw new Error(
         "Name, Description, Value, Stock, Supplier ID and Product ID are required"

@@ -1,5 +1,4 @@
 import Client from "../models/client.model.js";
-import db from "./db.js";
 
 const insertClient = async (client) => {
   try {

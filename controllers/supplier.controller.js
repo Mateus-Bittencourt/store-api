@@ -57,7 +57,7 @@ const updateSupplier = async (req, res, next) => {
       !supplier.phone ||
       !supplier.email ||
       !supplier.address ||
-      !supplier.supplier_id
+      !supplier.supplierId
     ) {
       throw new Error("Name, CNPJ, Phone, Email, Address and ID are required");
     }

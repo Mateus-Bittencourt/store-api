@@ -1,7 +1,7 @@
 import Sequelize from "sequelize";
 import db from "../repositories/db.js";
 
-const Client = db.define(
+const Supplier = db.define(
   "suppliers",
   {
     supplierId: {
