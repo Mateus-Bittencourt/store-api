@@ -18,7 +18,8 @@ const getProduct = async (id) => {
 };
 
 const deleteProduct = async (id) => {
-  if (await SaleRepository.getSalesByProductId(id)) {
+  const sales = await SaleRepository.getSalesByProductId(id);
+  if (sales.length > 0) {
     throw new Error("Product has sales");
   }
   return await ProductRepository.deleteProduct(id);

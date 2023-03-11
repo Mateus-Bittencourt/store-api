@@ -28,7 +28,7 @@ const updateProduct = async (product) => {
   try {
     await Product.update(product, {
       where: {
-        product_id: product.productId,
+        productId: product.productId,
       },
     });
     return await getProduct(product.productId);
@@ -41,7 +41,7 @@ const deleteProduct = async (id) => {
   try {
     await Product.destroy({
       where: {
-        product_id: id,
+        productId: id,
       },
     });
   } catch (error) {

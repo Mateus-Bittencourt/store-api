@@ -28,7 +28,7 @@ const updateSupplier = async (supplier) => {
   try {
     await Supplier.update(supplier, {
       where: {
-        supplier_id: supplier.supplierId,
+        supplierId: supplier.supplierId,
       },
     });
     return await getSupplier(supplier.supplierId);
@@ -41,7 +41,7 @@ const deleteSupplier = async (id) => {
   try {
     await Supplier.destroy({
       where: {
-        supplier_id: id,
+        supplierId: id,
       },
     });
   } catch (error) {

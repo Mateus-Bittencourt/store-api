@@ -3,8 +3,8 @@ import ClientRepository from "../repositories/client.repository.js";
 import ProductRepository from "../repositories/product.repository.js";
 
 const createSale = async (sale) => {
-  const client = await ClientRepository.getClient(sale.client_id);
-  const product = await ProductRepository.getProduct(sale.product_id);
+  const client = await ClientRepository.getClient(sale.clientId);
+  const product = await ProductRepository.getProduct(sale.productId);
   if (!client) throw new Error("Client not found");
   if (!product) throw new Error("Product not found");
 
@@ -16,8 +16,9 @@ const createSale = async (sale) => {
   } else throw new Error("Product out of stock");
 };
 
-const getSales = async (productId) => {
+const getSales = async (productId, supplierId) => {
   if (productId) return await SaleRepository.getSalesByProductId(productId);
+  if (supplierId) return await SaleRepository.getSalesBySupplierId(supplierId);
   return await SaleRepository.getSales();
 };
 
@@ -29,7 +30,7 @@ const deleteSale = async (id) => {
   const sale = await SaleRepository.getSale(id);
   if (!sale) throw new Error("Sale not found");
 
-  const product = await ProductRepository.getProduct(sale.product_id);
+  const product = await ProductRepository.getProduct(sale.productId);
   product.stock++;
   await ProductRepository.updateProduct(product);
 
@@ -37,8 +38,8 @@ const deleteSale = async (id) => {
 };
 
 const updateSale = async (sale) => {
-  const client = await ClientRepository.getClient(sale.client_id);
-  const product = await ProductRepository.getProduct(sale.product_id);
+  const client = await ClientRepository.getClient(sale.clientId);
+  const product = await ProductRepository.getProduct(sale.productId);
   if (!client) throw new Error("Client not found");
   if (!product) throw new Error("Product not found");
   return await SaleRepository.updateSale(sale);

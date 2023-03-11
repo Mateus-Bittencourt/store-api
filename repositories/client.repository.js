@@ -28,7 +28,7 @@ const updateClient = async (client) => {
   try {
     await Client.update(client, {
       where: {
-        client_id: client.clientId,
+        clientId: client.clientId,
       },
     });
     return await getClient(client.clientId);
@@ -41,7 +41,7 @@ const deleteClient = async (id) => {
   try {
     await Client.destroy({
       where: {
-        client_id: id,
+        clientId: id,
       },
     });
   } catch (error) {
